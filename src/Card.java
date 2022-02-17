@@ -8,6 +8,7 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
   private int value;
   private boolean isRed;
   private boolean facingUp;
+  //yes
  
  /** Must have this constructor.  You can add others*/
 	public Card(int suit, int value){
