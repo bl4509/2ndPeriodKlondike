@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.awt.*;
@@ -56,7 +57,7 @@ public abstract class Pile implements Drawable, Updateable {
     public void add(Card c){
         list.add(c);
     }
-    
+
     public String toString() {
         String s = "";
         for (Card c : list) {
