@@ -8,11 +8,7 @@ public class Aces extends Pile {
         this.suit = suit;
     }
 
-    public void canAddCard(Card c) {
-        if (list.isEmpty() && c.getValue() == 1) {
-            list.add(c);
-        }
-    }
+
 
     @Override
     public void draw(Graphics g) {
@@ -28,7 +24,11 @@ public class Aces extends Pile {
 
     @Override
     public boolean canAddCard(Card c) {
-        // TODO Auto-generated method stub
+        if (list.isEmpty() && c.getValue() == 1) {
+            list.add(c);
+            return true;
+        }
+        
         return false;
     }
     

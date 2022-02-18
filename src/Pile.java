@@ -14,7 +14,7 @@ public abstract class Pile implements Drawable, Updateable {
     
     public abstract boolean canAddCard(Card c);
     private Point loc;
-    private ArrayList<Card> list = new ArrayList<Card>();
+    protected static ArrayList<Card> list = new ArrayList<Card>();
 
     public Point getLoc(){
         return loc;
