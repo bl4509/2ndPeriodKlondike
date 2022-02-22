@@ -13,15 +13,26 @@ import java.awt.*;
 public abstract class Pile implements Drawable, Updateable {
     
     public abstract boolean canAddCard(Card c);
-    private Point loc;
+    private int x, y;
     protected static ArrayList<Card> list = new ArrayList<Card>();
 
-    public Point getLoc(){
-        return loc;
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
     }
 
-    public void setLoc(Point loc){
-       this.loc = loc; 
+    public void draw (){
+
+        for(Card c: list){
+            c.draw(g,x,y);
+        }
+    }
+
+    public void setLoc(int x, int y){
+       this.x = x;
+       this.y = y; 
     }
 
     public void shuffle(){
