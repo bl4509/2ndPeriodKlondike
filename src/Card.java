@@ -1,47 +1,91 @@
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
-
+import java.awt.*;
+import java.awt.Graphics;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+ 
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+ 
 /** represents a playing card that can draw itself. */
 public class Card implements Drawable, Updateable, Comparable <Card>{
-
-  private int suit;
+ 
+  private char suit;
   private int value;
   private boolean isRed;
   private boolean facingUp;
+  private int x, y;
+  private int numdraws=0;
+  private Image testImage;
+  private static Image backImage;
+
   //yes
- 
- /** Must have this constructor.  You can add others*/
-	public Card(int suit, int value){
+  
+  /** Must have this constructor.  You can add others*/
+  public Card( char suit, int value){
     this.suit = suit;
     this.value = value;
     if(suit == 1 || suit == 3) { //diamond and hearts suit
         isRed = true;
     } else {
-        isRed = false;
+    isRed = false;
     }
-	}
-	
+    
+    String s = "";
+
+    s += suit;
+    if(this.value <= 10) {
+    s += value;
+    } else if (this.value == 10) {
+    s += "j";
+    }  else if (this.value == 11) {
+    s += "q";
+    } else if (this.value == 12) {
+    s += "k";
+    } else {
+    s += "1";
+    }
+    String imageID = "images/cards/" + s + ".png";
+    try {
+        if(backImage == null) {
+            backImage = ImageIO.read(new File("images/cards/b1fv.png"));
+        }
+        testImage = ImageIO.read(new File(imageID));
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+      
+  }
+
   // add getters
   public int getSuit() {
-    return this.suit;
+      return this.suit;
   }
 
   public int getValue() {
-    return this.value;
+      return this.value;
   }
 
   public boolean isRed() {
       return this.isRed();
   }
 
-	@Override
-	/** This method satisfies the Comparable interface which determines
-	 * if this Object is smaller than, greater than or equal to the 
-	 * specified Card c
-	 * Formally, if this Card is smaller than c, a negative int is returned
-	 *           if this Card is larger than c, a positive int is returned
-	 *           if this Card is equal to c, zero is returned	*/
-	public int compareTo(Card c){
+  public boolean isFacingUp () {
+      return facingUp;
+  }
+
+  @Override
+  /** This method satisfies the Comparable interface which determines
+  * if this Object is smaller than, greater than or equal to the
+  * specified Card c
+  * Formally, if this Card is smaller than c, a negative int is returned
+  *           if this Card is larger than c, a positive int is returned
+  *           if this Card is equal to c, zero is returned    */
+  public int compareTo(Card c){
 
     if(this.value - c.value == 1 && this.isRed != c.isRed) {
         return 1;
@@ -49,73 +93,58 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
         return -1;
     }
 
-	}
+  }
 
 
-	
-	// represents this Card in the following manner
-	// if the card is the Ace of Spades, then 
-	// it returns "Ace of Spades". 2 - 10 can be represented
-	// as "2 of Hearts" or "Two of Hearts".  Your choice.
-	@Override
-	public String toString(){
-		String s = "";
-    if(this.value <= 10) {
-      s += value;
+
+  // represents this Card in the following manner
+  // if the card is the Ace of Spades, then
+  // it returns "Ace of Spades". 2 - 10 can be represented
+  // as "2 of Hearts" or "Two of Hearts".  Your choice.
+  @Override
+  public String toString(){
+  String s = "";
+
+  if(this.value <= 10) {
+    s += value + " of ";
     } else if (this.value == 10) {
-      s += "Jack";
+    s += "Jack of ";
     }  else if (this.value == 11) {
-      s += "Queen";
+    s += "Queen of ";
     } else if (this.value == 12) {
-      s += "King";
+    s += "King of ";
     } else {
-      s += "Ace";
+    s += "Ace of ";
     }
 
-    if(this.suit == 1) {
-      s += " of Diamonds";
+  if(this.suit == 1) {
+    s += "Diamond ";
     } else if (this.suit == 2) {
-      s += " of Clubs";
+    s += "Clubs";
     } else if (this.suit == 3) {
-      s += " of Hearts";
+    s += "Hearts";
     } else {
-      s += " of Spades";
-    }
+    s += "Spades";
+  }
+
+  return s;
+  }
+
+
+  @Override
+  public void update(ActionEvent a) {
+  // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void draw(Graphics g) {
+    numdraws++;
+    g.setColor(new Color(40, 155, 70));
+    g.fillRect(0, 0, 3000, 2000);
     
-		
-		return s;
-	}
+    // this is just to test drawing a card
+    g.drawImage(testImage, x, y, null);
 
-    @Override
-    public void update(ActionEvent a) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        // TODO Auto-generated method stub
-        
-    }
-
-  //   public void draw(Graphics g){
-  //     if(faceUp) g.drawImage(frontImage, x, y, null);
-  //     else g.drawImage(backImage, x, y, null);
-  //     int j = 0;
-  // for (int i = 0; i < j+1; i++){
-  //   Card c = new Card(1,1);
-  //   c.updateLocation(150 + (j-1)*100, 250 + (i)*50);
-  //   c.draw(g);
-  //   if (j < 7){
-  //     if (j > 1 && i < j){
-  //       j = j;
-  //       i = i;
-  //     }
-  //     else{
-  //       j++;
-  //       i = 0;
-  //     }
-  //   }
-  // }
-  // }
+  }
 }
