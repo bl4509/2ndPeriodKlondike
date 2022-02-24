@@ -19,15 +19,17 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
   private boolean facingUp;
   private int x, y;
   private int numdraws=0;
-  private Image testImage;
+  private Image frontImage;
   private static Image backImage;
 
   //yes
   
   /** Must have this constructor.  You can add others*/
-  public Card( char suit, int value){
+  public Card(char suit, int value, int x, int y){
     this.suit = suit;
     this.value = value;
+    this.x = x;
+    this.y = y;
     if(suit == 1 || suit == 3) { //diamond and hearts suit
         isRed = true;
     } else {
@@ -53,9 +55,8 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
         if(backImage == null) {
             backImage = ImageIO.read(new File("images/cards/b1fv.png"));
         }
-        testImage = ImageIO.read(new File(imageID));
+        frontImage = ImageIO.read(new File(imageID));
     } catch (IOException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
     }
       
@@ -117,11 +118,11 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
     s += "Ace of ";
     }
 
-  if(this.suit == 1) {
+  if(this.suit == 'd') {
     s += "Diamond ";
-    } else if (this.suit == 2) {
+    } else if (this.suit == 'c') {
     s += "Clubs";
-    } else if (this.suit == 3) {
+    } else if (this.suit == 'h') {
     s += "Hearts";
     } else {
     s += "Spades";
@@ -144,7 +145,7 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
     g.fillRect(0, 0, 3000, 2000);
     
     // this is just to test drawing a card
-    g.drawImage(testImage, x, y, null);
+    g.drawImage(frontImage, x, y, null);
 
   }
 }
