@@ -43,6 +43,33 @@ public class GameBoard implements Drawable, Updateable {
 		g.drawImage(backImage, 105, 100, null);
 	}
 
+	// public void draw(Graphics g) {
+	// 	numdraws++;
+	// 	g.setColor(new Color(40, 155, 70));
+	// 	g.fillRect(0, 0, 3000, 2000);
+	// 	g.drawImage(testImage, 30, 80, null);
+	// 	g.drawImage(backImage, 100, 80, null);
+	// 	g.drawImage(backImage, 105, 100, null);
+	// 	int j = 0;
+	// 	for (int i = 0; i < j+1; i++){
+	// 		Card c = new Card(1,1);
+	// 		c.updateLocation(150 + (j-1)*100, 250 + (i)*50);
+	// 		c.draw(g);
+	// 		if (j < 7){
+	// 			if (j > 1 && i < j){
+	// 				j = j;
+	// 				i = i;
+	// 			}
+	// 			else{
+	// 				j++;
+	// 				i = 0;
+	// 			}
+	// 		}
+	// 	}
+	// 	// this is just to test drawing a card
+	// }
+	
+
 
 	/**
 	 * This method is called by the game when a click has been made 
