@@ -1,28 +1,37 @@
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-
 public class ThreeCards extends Pile {
-
+ 
+    private int x;
+    private int y;
+ 
+ 
+    public ThreeCards(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+ 
     @Override
     public void draw(Graphics g) {
         int counter  = 0;
         for(Card c : list){
-          list.draw(g, c.getX()+(i*2), c.getY()+(i*2));  
+          c.draw(g,x+10, y);//the +10 shifts the card over so it is visble
+          counter ++;
+          if(counter == 3)
+          break;
         }
-        if(counter)
-        
+     
+       
     }
-
+ 
     @Override
     public void update(ActionEvent a) {
         // TODO Auto-generated method stub
-        
+       
     }
-
+ 
     @Override
     public boolean canAddCard(Card c) {
         // TODO Auto-generated method stub
         return false;
     }
-    
+   
 }
