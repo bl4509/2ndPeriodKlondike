@@ -79,6 +79,10 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
       return facingUp;
   }
 
+  public void flipUp() {
+    facingUp = true;
+  }
+
   @Override
   /** This method satisfies the Comparable interface which determines
   * if this Object is smaller than, greater than or equal to the
