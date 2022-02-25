@@ -17,8 +17,16 @@ public class Stack extends Pile {
 
     @Override
     public boolean canAddCard(Card c) {
-        // TODO Auto-generated method stub
+        if (list.isEmpty() && c.getValue() == 13) {
+            list.add(c);
+            return true;
+        } else if (list.get(list.size() - 1).getSuit() == c.getSuit() && list.get(list.size() - 1).getValue() == c.getValue() - 1) {
+            list.add(c);
+            return true;
+        }
+        
         return false;
+    }
     }
     
 }
