@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 public class Aces extends Pile {
     private int suit;
 
-    public Aces(int suit int x, int y) {
+    public Aces(int suit, int x, int y) {
         this.x = x;
         this.y = y;
         this.suit = suit;
@@ -14,7 +14,7 @@ public class Aces extends Pile {
 
     @Override
     public void draw(Graphics g) {
-        list.get(list.size() - 1).draw(g, x, y);
+        list.get(list.size() - 1).draw(g);
     }
 
     @Override

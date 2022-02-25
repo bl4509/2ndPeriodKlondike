@@ -83,6 +83,10 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
     facingUp = true;
   }
 
+  public void flipDown() {
+    facingUp = false;
+  }
+
   @Override
   /** This method satisfies the Comparable interface which determines
   * if this Object is smaller than, greater than or equal to the
@@ -149,7 +153,7 @@ public class Card implements Drawable, Updateable, Comparable <Card>{
     g.fillRect(0, 0, 3000, 2000);
     
     // this is just to test drawing a card
-    g.drawImage(frontImage, x, y, null);
+    g.drawImage(frontImage, this.x, this.y, null);
 
   }
 }

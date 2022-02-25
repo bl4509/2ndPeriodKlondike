@@ -13,7 +13,8 @@ import java.awt.*;
 public abstract class Pile implements Drawable, Updateable {
    
     public abstract boolean canAddCard(Card c);
-    private int x, y;
+    protected int x;
+    protected int y;
     protected static ArrayList<Card> list = new ArrayList<Card>();
  
     public int getX(){
